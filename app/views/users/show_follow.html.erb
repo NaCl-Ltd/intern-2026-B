@@ -22,16 +22,7 @@
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
-        <% @users.each do |user| %>
-          <li>
-            <%= gravatar_for user, size: 50 %>
-            <%= link_to user.name, user %>
-            <p class="user-follow-stats">
-              フォロー <%= user.following.count %>
-              フォロワー <%= user.followers.count %>
-            </p>
-          </li>
-        <% end %>
+        <%= render @users %>
       </ul>
       <%= will_paginate %>
     <% end %>

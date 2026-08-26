@@ -2,6 +2,10 @@
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user %>
   <p class="user-introduction"><%= user.introduction %></p>
+  <p class="user-follow-stats">
+    フォロー <%= user.following.count %>
+    フォロワー <%= user.followers.count %>
+  </p>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, data: { "turbo-method": :delete,
                                           turbo_confirm: "You sure?" } %>

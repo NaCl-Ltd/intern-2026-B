@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   get '/microposts', to: 'static_pages#home'
+  patch '/microposts/:id/pin', to: 'microposts#pin', as: 'pin_micropost'
+  patch '/microposts/:id/unpin', to: 'microposts#unpin', as: 'unpin_micropost'
+
 end

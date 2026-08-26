@@ -24,6 +24,26 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def pin
+    @micropost = current_user.microposts.find_by(id: params[:id])
+    if @micropost
+      @pin_microposts = current_user.microposts.pinning
+      if @pin_microposts.count >= 1
+        @pin_microposts.first.update(pinned: false)
+      end
+      @micropost.update(pinned: true)
+    end
+    redirect_to request.referrer || root_url, status: :see_other
+  end
+
+  def unpin
+    @micropost = current_user.microposts.find_by(id: params[:id])
+    if @micropost
+      @micropost.update(pinned: false)
+    end
+    redirect_to request.referrer || root_url, status: :see_other
+  end
+
   private
 
     def micropost_params

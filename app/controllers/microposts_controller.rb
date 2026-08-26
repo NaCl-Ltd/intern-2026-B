@@ -27,7 +27,7 @@ class MicropostsController < ApplicationController
   def pin
     @micropost = current_user.microposts.find_by(id: params[:id])
     if @micropost
-      @pin_microposts = current_user.microposts.where(pinned: true)
+      @pin_microposts = current_user.microposts.pinning
       if @pin_microposts.count >= 1
         @pin_microposts.first.update(pinned: false)
       end

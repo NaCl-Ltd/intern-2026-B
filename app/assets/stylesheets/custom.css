@@ -207,6 +207,19 @@ aside {
     display: block;
   }
 }
+.links{
+  overflow: auto;
+  margin-top: 0px;
+  padding: 0;  
+  border: 1px solid var(--gray-lighter);
+  p {
+    padding-top: 10px;
+    padding-left: 15px;
+  }
+  strong {
+    display: block;
+  }
+}
 div.stats {
   border: 1px solid var(--gray-lighter);
   border-top: 0;

@@ -345,3 +345,25 @@ span.image {
     border: 0;
   }
 }
+
+.microposts li{
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.like-area{
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.like-area form{
+  margin: 0;
+}
+
+.like-count{
+  white-space: nowrap;
+}

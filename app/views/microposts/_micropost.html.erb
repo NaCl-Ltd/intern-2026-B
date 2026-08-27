@@ -19,4 +19,22 @@
       <% end %>
     <% end %>
   </span>
+
+  <div class="like-area">
+    <% if logged_in? %>
+      <%if current_user.likes.exists?(micropost_id: micropost.id) %>
+        <%= button_to micropost_like_path(micropost),method: :delete do %>
+          <%= image_tag "like.png",size:18, alt: "いいね解除" %>
+        <% end %>
+      <% else %>
+        <%= button_to micropost_like_path(micropost),method: :post do %>
+          <%= image_tag "liked.png",size:18, alt: "いいね" %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <span class="like-count">
+      <%= micropost.likes.count %>件
+    </span>
+  </div>
 </li>

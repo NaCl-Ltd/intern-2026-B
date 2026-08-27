@@ -7,7 +7,7 @@
     フォロワー <%= user.followers.count %>
   </p>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, data: { "turbo-method": :delete,
+    | <%= link_to image_tag("trash.png", size: 18, alt: "削除"), user, data: { "turbo-method": :delete,
                                           turbo_confirm: "You sure?" } %>
   <% end %>
 </li>

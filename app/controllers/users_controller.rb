@@ -10,8 +10,21 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pin_microposts = @user.microposts.pinning
-    @unpin_microposts = @user.microposts.notpinning.paginate(page: params[:page])
+    @microposts_filtered = @user.microposts.pinning
+    @microposts_other = @user.microposts.notpinning.paginate(page: params[:page])
+    @title = "Microposts (#{@user.microposts.count})"
+    @microposts_title_filtered = "Pinning"
+    @microposts_title_other = "Not Pinned"
+  end
+
+  def likes
+    @user = User.find(params[:id])
+    @microposts_filtered = []
+    @microposts_other = @user.likes.paginate(page: params[:page])
+    @title = "Likes (#{@microposts_other.count})"
+    @microposts_title_filtered = ""
+    @microposts_title_other = ""
+    render 'show'
   end
 
   def new

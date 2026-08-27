@@ -1,0 +1,3 @@
+<% @user ||= current_user %>
+<p><%= link_to "Microposts", @user%></p>
+<p><%= link_to "Likes", likes_user_path(@user)%></p>

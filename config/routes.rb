@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get :following
       get :followers
+      get :likes
     end
   end
   resources :account_activations, only: [:edit]
@@ -22,5 +23,6 @@ Rails.application.routes.draw do
   get '/microposts', to: 'static_pages#home'
   patch '/microposts/:id/pin', to: 'microposts#pin', as: 'pin_micropost'
   patch '/microposts/:id/unpin', to: 'microposts#unpin', as: 'unpin_micropost'
+  
 
 end

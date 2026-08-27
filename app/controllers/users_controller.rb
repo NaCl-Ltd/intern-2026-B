@@ -10,15 +10,21 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pin_microposts = @user.microposts.pinning
-    @unpin_microposts = @user.microposts.notpinning.paginate(page: params[:page])
+    @microposts_a = @user.microposts.pinning
+    @microposts_b = @user.microposts.notpinning.paginate(page: params[:page])
+    @title = "Microposts (#{@user.microposts.count})"
+    @microposts_title_a = "Pinning"
+    @microposts_title_b = "Not Pinned"
   end
 
   def likes
     @user = User.find(params[:id])
-    #add
-    #@like_posts = 
-    render 'show_likes', status: :unprocessable_content
+    @microposts_a = []
+    @microposts_b = @user.likes.paginate(page: params[:page])
+    @title = "Likes (#{@microposts_b.count})"
+    @microposts_title_a = ""
+    @microposts_title_b = ""
+    render 'show', status: :unprocessable_content
   end
 
   def new

@@ -18,18 +18,18 @@
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h3><%= @title %></h3>
       <ol class="microposts">
-        <% if @pin_microposts.count > 0 %>
-          <p>Pinning</p>
-          <%= render @pin_microposts %>
-          <p>Not Pinned</p>
-          <%= render @unpin_microposts %>
+        <% if @microposts_a.any? %>
+          <p><%= @microposts_title_a %></p>
+          <%= render @microposts_a %>
+          <p><%= @microposts_title_b %></p>
+          <%= render @microposts_b %>
         <% else %>
-          <%= render @unpin_microposts %>
+          <%= render @microposts_b %>
         <% end %>
       </ol>
-      <%= will_paginate @unpin_microposts %>
+      <%= will_paginate @microposts_b %>
     <% end %>
   </div>
 </div>

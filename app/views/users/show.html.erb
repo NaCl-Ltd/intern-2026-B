@@ -20,16 +20,16 @@
     <% if @user.microposts.any? %>
       <h3><%= @title %></h3>
       <ol class="microposts">
-        <% if @microposts_a.any? %>
-          <p><%= @microposts_title_a %></p>
-          <%= render @microposts_a %>
-          <p><%= @microposts_title_b %></p>
-          <%= render @microposts_b %>
+        <% if @microposts_filtered.any? %>
+          <p><%= @microposts_title_filtered %></p>
+          <%= render @microposts_filtered %>
+          <p><%= @microposts_title_other %></p>
+          <%= render @microposts_other %>
         <% else %>
-          <%= render @microposts_b %>
+          <%= render @microposts_other %>
         <% end %>
       </ol>
-      <%= will_paginate @microposts_b %>
+      <%= will_paginate @microposts_other %>
     <% end %>
   </div>
 </div>

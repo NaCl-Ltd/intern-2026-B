@@ -8,8 +8,10 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  #add
-  # has_many :
+
+  has_many :likes, dependent: :destroy
+  has_many :liked_microposts, through: :likes, source: :micropost
+
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest

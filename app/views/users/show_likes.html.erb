@@ -10,26 +10,20 @@
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
-    </section>
-    <section>      
+    </section>    
+    <section>
       <%= render 'shared/links' %>
     </section>
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <!-- #add -->
+      <h3>Likes (<%#= @like_posts.count %>)</h3>      
       <ol class="microposts">
-        <% if @pin_microposts.count > 0 %>
-          <p>Pinning</p>
-          <%= render @pin_microposts %>
-          <p>Not Pinned</p>
-          <%= render @unpin_microposts %>
-        <% else %>
-          <%= render @unpin_microposts %>
-        <% end %>
+        <%#= render @like_posts %>
       </ol>
-      <%= will_paginate @unpin_microposts %>
+      <%#= will_paginate @like_posts %>      
     <% end %>
   </div>
 </div>

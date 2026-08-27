@@ -14,6 +14,13 @@ class UsersController < ApplicationController
     @unpin_microposts = @user.microposts.notpinning.paginate(page: params[:page])
   end
 
+  def likes
+    @user = User.find(params[:id])
+    #add
+    #@like_posts = 
+    render 'show_likes', status: :unprocessable_content
+  end
+
   def new
     @user = User.new
   end

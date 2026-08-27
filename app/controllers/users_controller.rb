@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def likes
     @user = User.find(params[:id])
     @microposts_filtered = []
-    @microposts_other = @user.likes.paginate(page: params[:page])
+    @microposts_other = @user.liked_microposts.paginate(page: params[:page])
     @title = "Likes (#{@microposts_other.count})"
     @microposts_title_filtered = ""
     @microposts_title_other = ""

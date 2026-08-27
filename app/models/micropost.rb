@@ -15,13 +15,8 @@ class Micropost < ApplicationRecord
                       size:         { less_than: 5.megabytes,
                                       message:   "should be less than 5MB" }
   
-  def self.pinning
-    where(pinned: true)
-  end
-  def self.notpinning
-    where(pinned: false)
-  end
-  def self.notpinning_feed(current_user_id)
-    where.not(pinned: true, user_id: current_user_id)
-  end
+  scope :pinning,         ->                  {where(pinned: true)}
+  scope :notpinning,      ->                  {where(pinned: false)}
+  scope :notpinning_feed, -> (current_user_id){where.not(pinned: true, user_id: current_user_id)}
+  
 end
